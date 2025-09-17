@@ -1,0 +1,19 @@
+{
+  "name": "docs.wrikka.com",
+  "private": true,
+  "packageManager": "bun@1.2.19",
+  "workspaces": [
+    "docs"
+  ],
+  "scripts": {
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "lint": "turbo lint",
+    "format": "turbo format",
+    "preview": "turbo preview",
+    "update:deps": "bunx taze -r -w"
+  },
+  "devDependencies": {
+    "turbo": "latest"
+  }
+}
