@@ -6,7 +6,7 @@ import "vitepress-plugin-sandpack/dist/style.css";
 import { createPinia } from "pinia";
 import { createPersistedState } from "pinia-plugin-persistedstate";
 import { createMediumZoomProvider } from "./composables/useMediumZoom";
-import CustomLayout from "./layouts/CustomLayout.vue";
+import CustomLayout from "./layouts/custom-layout.vue";
 import "./styles/index.css";
 import "./styles/nav-badge.css";
 import "uno.css";

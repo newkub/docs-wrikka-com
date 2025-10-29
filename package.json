@@ -6,7 +6,7 @@
     "build": "vitepress build docs",
     "preview": "vitepress preview docs",
     "format": "biome format --write && bunx dprint fmt",
-    "lint": "vue-tsc --noEmit",
+    "lint": "vue-tsc --noEmit && biome lint --write",
     "check:unused": "bunx knip",
     "release": "bunx release-it"
   },
