@@ -1,12 +1,10 @@
-import type { ShikiTransformer } from "@shikijs/types";
-import { transformerTwoslash } from "@shikijs/vitepress-twoslash";
-import { type DefaultTheme, defineConfig } from "vitepress";
+import { defineConfig } from "vitepress";
 import { withMermaid } from "vitepress-plugin-mermaid";
 import { externalLinksPlugin } from "./plugins/markdown/external-links";
 import { kbdPlugin } from "./plugins/markdown/markdown-kbd";
 import { replPlugin } from "./plugins/markdown/repl";
 import { nav } from "./config/nav";
-import { groupIconMdPlugin, groupIconVitePlugin } from 'vitepress-plugin-group-icons'
+import { groupIconMdPlugin } from 'vitepress-plugin-group-icons'
 import { Sidebar } from "./config/sidebar";
 import container from 'markdown-it-container';
 import { renderSandbox } from 'vitepress-plugin-sandpack';
