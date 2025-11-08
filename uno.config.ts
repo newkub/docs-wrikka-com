@@ -2,7 +2,11 @@ import { defineConfig, presetIcons, presetWind4, transformerDirectives, transfor
 
 export default defineConfig({
 	presets: [
-		presetWind4(),
+		presetWind4({
+			preflights: { 
+			  theme: true, 
+			}, 
+		  }),
 		presetIcons({
 			scale: 1.2,
 			warn: true,
