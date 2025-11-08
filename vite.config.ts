@@ -14,10 +14,7 @@ export default defineConfig ({
       },
       typescript: true,
       vueTsc: true,
-      /*
-      biome: {
-        command: "lint",
-      },*/
+      oxlint : true
     }),
     AutoImport({
       imports: ["vue"],
