@@ -1,23 +1,4 @@
 <script setup lang="ts">
-import { useBlog, type BlogPost } from "../theme/composables/useBlog";
-import { ref, computed } from "vue";
-
-const { filteredPosts, categories, tags } = useBlog();
-
-// State for storing selected filters
-const selectedCategory = ref<string | null>(null);
-const selectedTag = ref<string | null>(null);
-
-// Function to filter posts
-const filteredPostsByCategoryAndTag = computed(() => {
-	return filteredPosts.value.filter((post) => {
-		const matchCategory =
-			!selectedCategory.value || post.category === selectedCategory.value;
-		const matchTag =
-			!selectedTag.value || post.tags?.includes(selectedTag.value);
-		return matchCategory && matchTag;
-	});
-});
 </script>
 
 <template>
