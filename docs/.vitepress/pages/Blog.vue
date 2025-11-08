@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useBlog, type BlogPost } from "../theme/composables/useBlog";
+import { useBlog, type BlogPost } from "../composables/useBlog";
 import { ref, computed } from "vue";
 
 const { filteredPosts, categories, tags } = useBlog();
