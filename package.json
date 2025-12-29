@@ -1,5 +1,5 @@
 {
-  "name": "wrikka-docs",
+  "name": "@wpackages/docs-wrikka-com",
   "type": "module",
   "scripts": {
     "dev": "vitepress dev docs",
