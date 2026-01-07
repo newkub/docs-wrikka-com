@@ -77,7 +77,7 @@ export default function useVideoPlayer(
 			if (isPlaying.value) {
 				videoPlayer.value.pause();
 			} else {
-				videoPlayer.value.play();
+				void videoPlayer.value.play();
 			}
 			isPlaying.value = !isPlaying.value;
 		}
@@ -97,9 +97,9 @@ export default function useVideoPlayer(
 
 	const toggleFullScreen = () => {
 		if (!document.fullscreenElement && videoPlayer.value) {
-			videoPlayer.value.requestFullscreen();
+			void videoPlayer.value.requestFullscreen();
 		} else {
-			document.exitFullscreen();
+			void document.exitFullscreen();
 		}
 	};
 

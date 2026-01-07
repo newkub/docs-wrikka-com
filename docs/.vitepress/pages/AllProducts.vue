@@ -1,4 +1,8 @@
 
+<script lang="ts">
+export default {}
+</script>
+
 <script setup lang="ts">
 import { useRouter } from "vitepress";
 import { ref, computed } from "vue";

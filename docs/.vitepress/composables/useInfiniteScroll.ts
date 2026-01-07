@@ -43,7 +43,7 @@ export function useInfiniteScroll(
 				(entries) => {
 					entries.forEach((entry) => {
 						if (entry.isIntersecting && options.hasMore.value) {
-							handleLoadMore();
+							void handleLoadMore();
 						}
 					});
 				},

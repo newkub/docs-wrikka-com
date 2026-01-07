@@ -1,3 +1,7 @@
+<script lang="ts">
+export default {};
+</script>
+
 <script setup lang="ts">
 import { useBlog, type BlogPost } from "../composables/useBlog";
 import { ref, computed } from "vue";

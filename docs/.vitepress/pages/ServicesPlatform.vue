@@ -1,3 +1,62 @@
+<script lang="ts">
+export default {}
+</script>
+
+<script setup lang="ts">
+import { ref, onMounted } from "vue";
+import { useRoute } from "vitepress";
+
+interface NavigationItem {
+	id: string;
+	name: string;
+	icon: string;
+	path: string;
+}
+
+const route = useRoute();
+const activeContent = ref("services");
+
+const navigationItems: NavigationItem[] = [
+	{
+		id: "services",
+		name: "Services",
+		icon: "i-mdi-cube-outline",
+		path: "/services-platform/services",
+	},
+	{
+		id: "store",
+		name: "Store",
+		icon: "i-mdi-store-outline",
+		path: "/services-platform/store",
+	},
+	{
+		id: "customers",
+		name: "Customers",
+		icon: "i-mdi-account-group-outline",
+		path: "/services-platform/customers",
+	},
+	{
+		id: "transactions",
+		name: "Transactions",
+		icon: "i-mdi-swap-horizontal",
+		path: "/services-platform/transactions",
+	},
+];
+
+// Check if current page path matches navigation item path
+function isActive(path: string): boolean {
+	return route.path === path;
+}
+
+// Set active content based on current page path
+onMounted(() => {
+	const currentItem = navigationItems.find((item) => isActive(item.path));
+	if (currentItem) {
+		activeContent.value = currentItem.id;
+	}
+});
+</script>
+
 <template>
   <div class="flex h-screen bg-gray-50 dark:bg-gray-800">
     <!-- Sidebar -->
@@ -44,58 +103,3 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-import { ref, computed, onMounted } from "vue";
-import { useData } from "vitepress";
-
-interface NavigationItem {
-	id: string;
-	name: string;
-	icon: string;
-	path: string;
-}
-
-const { page } = useData();
-const activeContent = ref("services");
-
-const navigationItems: NavigationItem[] = [
-	{
-		id: "services",
-		name: "Services",
-		icon: "i-mdi-cube-outline",
-		path: "/services-platform/services",
-	},
-	{
-		id: "store",
-		name: "Store",
-		icon: "i-mdi-store-outline",
-		path: "/services-platform/store",
-	},
-	{
-		id: "customers",
-		name: "Customers",
-		icon: "i-mdi-account-group-outline",
-		path: "/services-platform/customers",
-	},
-	{
-		id: "transactions",
-		name: "Transactions",
-		icon: "i-mdi-swap-horizontal",
-		path: "/services-platform/transactions",
-	},
-];
-
-// Check if current page path matches navigation item path
-function isActive(path: string): boolean {
-	return page.value.path === path;
-}
-
-// Set active content based on current page path
-onMounted(() => {
-	const currentItem = navigationItems.find((item) => isActive(item.path));
-	if (currentItem) {
-		activeContent.value = currentItem.id;
-	}
-});
-</script>

@@ -113,7 +113,7 @@ export default withMermaid(
                 md.use(externalLinksPlugin);
                 md.use(kbdPlugin);
                 md.use(container, 'sandbox', {
-                    render(tokens, idx) {
+                    render(tokens: any[], idx: number) {
                         return renderSandbox(tokens, idx, 'sandbox');
                     },
                 });

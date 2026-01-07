@@ -1,4 +1,3 @@
-import UnoCSS from "unocss/vite";
 import AST from "unplugin-ast/vite";
 import AutoImport from "unplugin-auto-import/vite";
 import Icons from "unplugin-icons/vite";
@@ -9,14 +8,12 @@ import TurboConsole from "unplugin-turbo-console/vite";
 import Unused from "unplugin-unused/vite";
 import { defineConfig } from "vite";
 import checker from "vite-plugin-checker";
-import Inspect from "vite-plugin-inspect";
 import Terminal from "vite-plugin-terminal";
 import tsconfigPaths from "vite-tsconfig-paths";
 import { groupIconVitePlugin } from "vitepress-plugin-group-icons";
 
 export default defineConfig({
   plugins: [
-    UnoCSS(),
     AutoImport({
       imports: ["vue"],
       vueTemplate: true,
@@ -32,7 +29,7 @@ export default defineConfig({
     TurboConsole({}),
     Terminal(),
     // analyzer(),
-    Inspect(),
+    // Inspect(),
     Unused({
       include: [/\.([cm]?[jt]sx?|vue)$/],
       exclude: [/node_modules/],

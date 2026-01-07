@@ -1,3 +1,145 @@
+<script lang="ts">
+export default {}
+</script>
+
+<script setup lang="ts">
+import { useRouter } from "vitepress";
+import { ref, computed } from "vue";
+
+interface BlogPost {
+	id: number;
+	title: string;
+	excerpt: string;
+	date: string;
+	slug: string;
+	category?: string;
+	views?: number;
+	likes?: number;
+	tags?: string[];
+}
+
+const router = useRouter();
+const viewMode = ref<"grid" | "list">("grid");
+const selectedCategory = ref("");
+const selectedYear = ref("");
+const selectedTag = ref("");
+
+const products = ref<BlogPost[]>([
+	{
+		id: 1,
+		title: "Article 1",
+		excerpt:
+			"Brief content of the article with more detailed information to show the layout.",
+		date: "2023-10-01",
+		slug: "blog-post-1",
+		category: "Technology",
+		views: 100,
+		likes: 20,
+		tags: ["AI", "Machine Learning", "Python"],
+	},
+	{
+		id: 2,
+		title: "Article 2",
+		excerpt:
+			"Brief content of the article with more detailed information to show the layout.",
+		date: "2023-10-05",
+		slug: "blog-post-2",
+		category: "Business",
+		views: 150,
+		likes: 30,
+		tags: ["Startup", "Marketing"],
+	},
+	{
+		id: 3,
+		title: "Article 3",
+		excerpt:
+			"Brief content of the article with more detailed information to show the layout.",
+		date: "2023-10-10",
+		slug: "blog-post-3",
+		category: "Technology",
+		views: 80,
+		likes: 15,
+		tags: ["JavaScript", "Vue"],
+	},
+	{
+		id: 4,
+		title: "Article 4",
+		excerpt:
+			"Brief content of the article with more detailed information to show the layout.",
+		date: "2023-10-15",
+		slug: "blog-post-4",
+		category: "Design",
+		views: 120,
+		likes: 25,
+		tags: ["UI/UX", "Figma"],
+	},
+]);
+
+// Computed Properties
+const categories = computed(() => {
+	const allCategories = products.value.map((post) => post.category || "Blog");
+	return [...new Set(allCategories)];
+});
+
+const years = computed(() => {
+	return [
+		...new Set(products.value.map((post) => new Date(post.date).getFullYear())),
+	];
+});
+
+const allTags = computed(() => {
+	const tags = products.value.flatMap((post) => post.tags || []);
+	return [...new Set(tags)];
+});
+
+const filteredPosts = computed(() => {
+	return products.value.filter((post) => {
+		const matchesCategory =
+			!selectedCategory.value ||
+			(post.category || "Blog") === selectedCategory.value;
+
+		const matchesYear =
+			!selectedYear.value ||
+			new Date(post.date).getFullYear().toString() === selectedYear.value;
+
+		const matchesTag =
+			!selectedTag.value || (post.tags || []).includes(selectedTag.value);
+
+		return matchesCategory && matchesYear && matchesTag;
+	});
+});
+
+const groupedPosts = computed(() => {
+	const groups: Record<string, BlogPost[]> = {};
+
+	for (const post of filteredPosts.value) {
+		const date = new Date(post.date);
+		const groupName = `${date.toLocaleString("default", { month: "long" })} ${date.getFullYear()}`;
+
+		if (!groups[groupName]) {
+			groups[groupName] = [];
+		}
+
+		groups[groupName].push(post);
+	}
+
+	return groups;
+});
+
+const navigateToBlog = (slug: string): void => {
+	router.go(`/blog/${slug}`);
+};
+
+const formatDate = (dateString: string): string => {
+	const date = new Date(dateString);
+	return new Intl.DateTimeFormat("en-US", {
+		year: "numeric",
+		month: "long",
+		day: "numeric",
+	}).format(date);
+};
+</script>
+
 <template>
   <div class="container mx-auto px-4 py-8">
     <!-- View Controls -->
@@ -170,141 +312,3 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-import { useRouter } from "vitepress";
-import { ref, computed } from "vue";
-
-interface BlogPost {
-	id: number;
-	title: string;
-	excerpt: string;
-	date: string;
-	slug: string;
-	category?: string;
-	views?: number;
-	likes?: number;
-	tags?: string[];
-}
-
-const router = useRouter();
-const viewMode = ref<"grid" | "list">("grid");
-const selectedCategory = ref("");
-const selectedYear = ref("");
-const selectedTag = ref("");
-
-const products = ref<BlogPost[]>([
-	{
-		id: 1,
-		title: "Article 1",
-		excerpt:
-			"Brief content of the article with more detailed information to show the layout.",
-		date: "2023-10-01",
-		slug: "blog-post-1",
-		category: "Technology",
-		views: 100,
-		likes: 20,
-		tags: ["AI", "Machine Learning", "Python"],
-	},
-	{
-		id: 2,
-		title: "Article 2",
-		excerpt:
-			"Brief content of the article with more detailed information to show the layout.",
-		date: "2023-10-05",
-		slug: "blog-post-2",
-		category: "Business",
-		views: 150,
-		likes: 30,
-		tags: ["Startup", "Marketing"],
-	},
-	{
-		id: 3,
-		title: "Article 3",
-		excerpt:
-			"Brief content of the article with more detailed information to show the layout.",
-		date: "2023-10-10",
-		slug: "blog-post-3",
-		category: "Technology",
-		views: 80,
-		likes: 15,
-		tags: ["JavaScript", "Vue"],
-	},
-	{
-		id: 4,
-		title: "Article 4",
-		excerpt:
-			"Brief content of the article with more detailed information to show the layout.",
-		date: "2023-10-15",
-		slug: "blog-post-4",
-		category: "Design",
-		views: 120,
-		likes: 25,
-		tags: ["UI/UX", "Figma"],
-	},
-]);
-
-// Computed Properties
-const categories = computed(() => {
-	const allCategories = products.value.map((post) => post.category || "Blog");
-	return [...new Set(allCategories)];
-});
-
-const years = computed(() => {
-	return [
-		...new Set(products.value.map((post) => new Date(post.date).getFullYear())),
-	];
-});
-
-const allTags = computed(() => {
-	const tags = products.value.flatMap((post) => post.tags || []);
-	return [...new Set(tags)];
-});
-
-const filteredPosts = computed(() => {
-	return products.value.filter((post) => {
-		const matchesCategory =
-			!selectedCategory.value ||
-			(post.category || "Blog") === selectedCategory.value;
-
-		const matchesYear =
-			!selectedYear.value ||
-			new Date(post.date).getFullYear().toString() === selectedYear.value;
-
-		const matchesTag =
-			!selectedTag.value || (post.tags || []).includes(selectedTag.value);
-
-		return matchesCategory && matchesYear && matchesTag;
-	});
-});
-
-const groupedPosts = computed(() => {
-	const groups: Record<string, BlogPost[]> = {};
-
-	for (const post of filteredPosts.value) {
-		const date = new Date(post.date);
-		const groupName = `${date.toLocaleString("default", { month: "long" })} ${date.getFullYear()}`;
-
-		if (!groups[groupName]) {
-			groups[groupName] = [];
-		}
-
-		groups[groupName].push(post);
-	}
-
-	return groups;
-});
-
-const navigateToBlog = (slug: string): void => {
-	router.go(`/blog/${slug}`);
-};
-
-const formatDate = (dateString: string): string => {
-	const date = new Date(dateString);
-	return new Intl.DateTimeFormat("en-US", {
-		year: "numeric",
-		month: "long",
-		day: "numeric",
-	}).format(date);
-};
-</script>

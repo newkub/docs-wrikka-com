@@ -7,7 +7,7 @@ hero:
   text: Modern Development Framework
   tagline: Complete toolkit for modern web development
   image:
-    src: /logo.svg
+    src: /favicon.svg
     alt: Wrikka Framework
   actions:
     - theme: brand
