@@ -10,11 +10,13 @@ Welcome to Vitext! This guide will help you get up and running with the modern t
 ## Installation
 
 ### Global Installation
+
 ```bash
 bun add -g @wrikka/vitext
 ```
 
 ### Project Installation
+
 ```bash
 bun add -D @wrikka/vitext
 ```
@@ -22,6 +24,7 @@ bun add -D @wrikka/vitext
 ## First Launch
 
 ### Launch Vitext
+
 ```bash
 # Global installation
 vitext
@@ -31,6 +34,7 @@ bun vitext
 ```
 
 ### Open a File or Directory
+
 ```bash
 # Open specific file
 vitext README.md
@@ -52,21 +56,25 @@ vitext README.md:10
 ## Essential Features
 
 ### File Explorer
+
 - Navigate your project structure
 - Create, rename, delete files
 - Search and filter files
 
 ### Integrated Terminal
+
 - Run commands without leaving the editor
 - Multiple terminal tabs
 - Command history
 
 ### Search & Replace
+
 - Global search across files
 - Regex support
 - Case-sensitive options
 
 ### Git Integration
+
 - View changes and diffs
 - Stage and commit changes
 - Branch management
@@ -79,31 +87,31 @@ Create a `vitext.config.js` file in your project root:
 export default {
   // Editor settings
   fontSize: 14,
-  fontFamily: 'Fira Code',
+  fontFamily: "Fira Code",
   lineHeight: 1.6,
-  
+
   // Behavior
   tabSize: 2,
   insertSpaces: true,
   wordWrap: true,
-  
+
   // Features
   minimap: true,
   lineNumbers: true,
   autoComplete: true,
-  
+
   // Theme
-  theme: 'dark',
-  syntaxHighlighting: true
-}
+  theme: "dark",
+  syntaxHighlighting: true,
+};
 ```
 
 ## Next Steps
 
-- [Learn about configuration](./configuration)
-- [Explore extensions](./extensions)
-- [Customize themes](./themes)
-- [View API documentation](./api)
+- Learn about [configuration](./configuration)
+- Explore [extensions](./extensions)
+- Customize [themes](./themes)
+- View [API documentation](./api)
 
 ## Need Help?
 

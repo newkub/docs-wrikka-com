@@ -1,25 +1,55 @@
 import UnoCSS from "unocss/vite";
+import AST from "unplugin-ast/vite";
 import AutoImport from "unplugin-auto-import/vite";
+import Icons from "unplugin-icons/vite";
+import UnpluginIsolatedDecl from "unplugin-isolated-decl/vite";
+import Macros from "unplugin-macros/vite";
+import Replace from "unplugin-replace/vite";
+import TurboConsole from "unplugin-turbo-console/vite";
+import Unused from "unplugin-unused/vite";
 import { defineConfig } from "vite";
 import checker from "vite-plugin-checker";
+import Inspect from "vite-plugin-inspect";
+import Terminal from "vite-plugin-terminal";
+import tsconfigPaths from "vite-tsconfig-paths";
 import { groupIconVitePlugin } from "vitepress-plugin-group-icons";
 
-
-export default defineConfig ({
+export default defineConfig({
   plugins: [
     UnoCSS(),
-    checker({
-      overlay: {
-        initialIsOpen : false,
-      },
-      typescript: true,
-      vueTsc: true,
-      oxlint : true
-    }),
     AutoImport({
       imports: ["vue"],
       vueTemplate: true,
-      dts: true
+      dts: true,
+    }),
+    AST({}),
+    Icons({
+      autoInstall: true,
+    }),
+    UnpluginIsolatedDecl(),
+    Macros(),
+    Replace(),
+    TurboConsole({}),
+    Terminal(),
+    // analyzer(),
+    Inspect(),
+    Unused({
+      include: [/\.([cm]?[jt]sx?|vue)$/],
+      exclude: [/node_modules/],
+      level: "warning",
+      ignore: {
+        peerDependencies: ["vue"],
+      },
+      depKinds: ["dependencies", "peerDependencies"],
+    }),
+    tsconfigPaths(),
+    checker({
+      overlay: {
+        initialIsOpen: false,
+      },
+      typescript: true,
+      vueTsc: true,
+      oxlint: true,
     }),
     groupIconVitePlugin({
       customIcon: {

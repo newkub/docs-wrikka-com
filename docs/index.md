@@ -2,7 +2,6 @@
 layout: home
 title: Wrikka Framework
 titleTemplate: Modern Development Framework
-
 hero:
   name: Wrikka Framework
   text: Modern Development Framework
@@ -17,7 +16,6 @@ hero:
     - theme: alt
       text: View on GitHub
       link: https://github.com/newkub/wrikka
-
 features:
   - icon: ⚡️
     title: Lightning Fast
@@ -37,7 +35,6 @@ features:
   - icon: 🚀
     title: Production Ready
     details: Battle-tested in production environments.
-
 ---
 
 ## Welcome to Wrikka Framework
@@ -61,26 +58,15 @@ bun dev
 ## Framework Components
 
 ### 📝 [Vitext](/vitext/)
+
 Modern text editor and development environment with intelligent features.
 
 ### 🛠️ [CLI](/cli/)
+
 Powerful command-line tools for project management and development automation.
-
-### 🤖 [AI](/ai/)
-AI-powered development assistance and code generation tools.
-
-### 🎨 [UI Components](/ui/)
-Beautiful, accessible component library for modern interfaces.
-
-### 📚 [Docs](/docs/)
-Comprehensive documentation and guides.
-
-### 🖥️ [Server](/server/)
-High-performance server engine for modern applications.
 
 ## Resources
 
-- [Blog](/blog) - Latest updates and tutorials
 - [Changelog](/changelog) - Version history and updates
 - [Feedback](/feedback) - Share your thoughts
 - [Contributing](/contributing) - Join our community

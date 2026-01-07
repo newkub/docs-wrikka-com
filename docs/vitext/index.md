@@ -10,21 +10,25 @@ Vitext is a modern text editor and development environment designed for producti
 ## Features
 
 ### 🚀 Performance
+
 - Lightning-fast startup and response times
 - Optimized memory usage
 - Smooth scrolling and rendering
 
 ### 🧠 Intelligence
+
 - Smart code completion
 - AI-powered suggestions
 - Context-aware refactoring
 
 ### 🎨 Customization
+
 - Flexible theming system
 - Customizable keybindings
 - Extensible plugin architecture
 
 ### 🔧 Developer Tools
+
 - Integrated debugger
 - Built-in terminal
 - Git integration
@@ -45,14 +49,14 @@ Vitext uses a simple configuration file (`vitext.config.js`) to customize your e
 
 ```js
 export default {
-  theme: 'dark',
+  theme: "dark",
   fontSize: 14,
   tabSize: 2,
   wordWrap: true,
   minimap: true,
   autoComplete: true,
-  aiSuggestions: true
-}
+  aiSuggestions: true,
+};
 ```
 
 ## Extensions
@@ -66,13 +70,13 @@ Extend Vitext functionality with powerful extensions:
 
 ## Keyboard Shortcuts
 
-| Action | Windows/Linux | macOS |
-|--------|---------------|-------|
-| Save | `Ctrl+S` | `Cmd+S` |
-| Find | `Ctrl+F` | `Cmd+F` |
+| Action          | Windows/Linux  | macOS         |
+| --------------- | -------------- | ------------- |
+| Save            | `Ctrl+S`       | `Cmd+S`       |
+| Find            | `Ctrl+F`       | `Cmd+F`       |
 | Command Palette | `Ctrl+Shift+P` | `Cmd+Shift+P` |
-| Toggle Sidebar | `Ctrl+B` | `Cmd+B` |
-| Toggle Terminal | `Ctrl+\`` | `Cmd+\`` |
+| Toggle Sidebar  | `Ctrl+B`       | `Cmd+B`       |
+| Toggle Terminal | `Ctrl+\``      | `Cmd+\``      |
 
 ## Next Steps
 
