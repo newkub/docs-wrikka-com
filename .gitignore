@@ -56,3 +56,6 @@ test-results/
 .wrangler
 .continueignore
 *.timestamp-*
+
+# Turborepo
+.turbo
