@@ -1,5 +1,6 @@
 {
   "lockfileVersion": 1,
+  "configVersion": 0,
   "workspaces": {
     "": {
       "dependencies": {
@@ -10,7 +11,6 @@
         "vitepress-plugin-mermaid": "^2.0.17",
       },
       "devDependencies": {
-        "@biomejs/biome": "2.3.2",
         "@iconify-json/logos": "^1.2.10",
         "@iconify-json/mdi": "^1.2.3",
         "@shikijs/markdown-it": "^3.15.0",
